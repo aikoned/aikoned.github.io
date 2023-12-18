@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipher Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Decipher the Weird Mishmash</h2>
+
+        <!-- Larger and Centered Cipher Chart -->
+        <div class="cipher-chart-container">
+            <h3>Cipher Shift Chart</h3>
+            <p>A ➔ C<br> B ➔ D<br> C ➔ E<br> D ➔ F<br> E ➔ G<br> F ➔ H<br> G ➔ I<br> H ➔ J<br> I ➔ K<br> J ➔ L<br> K ➔ M<br> L ➔ N<br> M ➔ O<br> N ➔ P<br> O ➔ Q<br> P ➔ R<br> Q ➔ S<br> R ➔ T<br> S ➔ U<br> T ➔ V<br> U ➔ W<br> V ➔ X<br> W ➔ Y<br> X ➔ Z<br> Y ➔ A<br> Z ➔ B</p>
+        </div>
+
+        <p>Decrypt this message:</p>
+        <p id="cipherText">Ykvjkp Oa Jgctv</p> <!-- Correct encrypted message 'Heart' with a shift of 2 -->
+        <input type="text" id="decryptedMessage" placeholder="Enter decrypted message">
+        <button onclick="checkDecryptedMessage()">Submit Answer</button>
+        
+        <!-- Hint Paragraph -->
+        <div class="hint-section">
+            <p>If you need a hint:</p>
+            <p class="hint">
+The shift value is 2. Each letter has been shifted two places to the right in the alphabet.
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
