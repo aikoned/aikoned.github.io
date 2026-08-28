@@ -1,21 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Enigmatic Lock</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aikon's collection of apps, bots, games, tools, and ongoing experiments.">
+    <meta name="theme-color" content="#fff8ed">
+    <meta property="og:title" content="Aikon makes things">
+    <meta property="og:description" content="Apps, bots, games, tools, and experiments by Aikon.">
+    <meta property="og:type" content="website">
+    <title>Aikon makes things</title>
+    <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to The Enchained Lock</h1>
-        <p>Your escape begins here. Can you unlock the secret message? :3</p>
-        <a href="puzzle1.html" class="start-btn">Start the Adventure</a>
-        <div class="password-input">
-            <input type="text" id="finalPassword" placeholder="Enter Final Password">
-            <button onclick="checkFinalPassword()" class="unlock-btn">Unlock</button>
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">Skip to projects</a>
+
+    <header class="topbar">
+      <a class="home-link" href="#top"><span class="logo-dot" aria-hidden="true"></span>aikon</a>
+      <nav aria-label="Primary navigation">
+        <a href="#projects">things i've made</a>
+        <a href="#about">about</a>
+        <a href="https://github.com/aikoned" target="_blank" rel="noreferrer">github ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <h1 id="intro-title">i'm aikon. i like<br>making <span>useful-ish</span> things.</h1>
+        <div class="intro-note">
+          <p>Sometimes it’s a bot. Sometimes it’s a game. Sometimes it’s a tool I wanted and decided to build myself.</p>
+          <a href="#projects">see what i've been up to ↓</a>
         </div>
-    </div>
+        <div class="orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+      </section>
+
+      <section class="project-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-title-row">
+          <div>
+            <p class="tiny-label">the good stuff</p>
+            <h2 id="projects-title">things i've finished</h2>
+          </div>
+          <p class="side-note">two projects made it across the finish line so far</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card card-yellow" data-project data-status="completed">
+            <div class="card-topline">
+              <span class="project-number">01</span>
+              <span class="status completed"><i aria-hidden="true"></i> completed</span>
+            </div>
+            <p class="date-line"><time datetime="2026-03-23">mar 23</time> → <time datetime="2026-04-11">apr 11, 2026</time></p>
+            <h3>Aikon's Autoclicker</h3>
+            <p class="project-blurb">A Windows desktop auto-clicker I built because the existing options never felt quite right. It handles custom intervals, multiple mouse buttons, click limits, and a global F6 shortcut.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>Python</li><li>Tkinter</li><li>pynput</li><li>Windows</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://github.com/aikoned/auto-clicker/releases/latest" target="_blank" rel="noreferrer">download it ↗</a>
+              <a href="https://github.com/aikoned/auto-clicker" target="_blank" rel="noreferrer">source ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card card-blue" data-project data-status="completed">
+            <div class="card-topline">
+              <span class="project-number">02</span>
+              <span class="status completed"><i aria-hidden="true"></i> completed</span>
+            </div>
+            <p class="date-line"><time datetime="2026-01-30">jan 30</time> → <time datetime="2026-02-07">feb 7, 2026</time></p>
+            <h3>Sketcher</h3>
+            <p class="project-blurb">A real-time drawing and guessing game for friends. Make a lobby, take turns drawing, race to guess the answer, and collect points before the round ends.</p>
+            <ul class="tag-list" aria-label="Technologies used">
+              <li>JavaScript</li><li>Socket.io</li><li>Canvas</li><li>Express</li>
+            </ul>
+            <div class="card-links">
+              <a href="https://sketcher-production.up.railway.app" target="_blank" rel="noreferrer">play it ↗</a>
+              <span class="private-note">source is private</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="wip-block">
+          <div class="section-title-row">
+            <div>
+              <p class="tiny-label">currently on my desk</p>
+              <h2>things i'm still tinkering with</h2>
+            </div>
+            <p class="side-note">these are alive, changing, and probably a little messy</p>
+          </div>
+
+          <div class="project-grid wip-grid">
+            <article class="project-card card-mint" data-project data-status="wip">
+              <div class="card-topline">
+                <span class="project-number">03</span>
+                <span class="status wip"><i aria-hidden="true"></i> wip</span>
+              </div>
+              <p class="date-line"><time datetime="2026-05-10">started may 10, 2026</time> → now</p>
+              <h3>AI Orion</h3>
+              <p class="project-blurb">My attempt at a local-first “second brain”: one place for AI chat, long-term memory, notes, tasks, reminders, and a useful view of the day ahead.</p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li>Next.js</li><li>Electron</li><li>TypeScript</li><li>Postgres</li>
+              </ul>
+              <div class="card-links"><span class="private-note">private build · actively evolving</span></div>
+            </article>
+
+            <article class="project-card card-lilac" data-project data-status="wip">
+              <div class="card-topline">
+                <span class="project-number">04</span>
+                <span class="status wip"><i aria-hidden="true"></i> wip</span>
+              </div>
+              <p class="date-line"><time datetime="2026-02-16">started feb 16, 2026</time> → now</p>
+              <h3>LumiBot</h3>
+              <p class="project-blurb">A family of Discord bots that grew into separate music, AI, and moderation projects. Together they handle voice playback, playlists, conversational AI, server logging, custom embeds, and reaction roles.</p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li>TypeScript</li><li>Discord.js</li><li>Grok</li><li>Postgres</li>
+              </ul>
+              <div class="card-links"><span class="private-note">private source · three connected bots</span></div>
+            </article>
+
+            <article class="project-card card-pink" data-project data-status="wip">
+              <div class="card-topline">
+                <span class="project-number">05</span>
+                <span class="status wip"><i aria-hidden="true"></i> wip</span>
+              </div>
+              <p class="date-line"><time datetime="2026-03-20">started mar 20, 2026</time> → now</p>
+              <h3>Aikon's Adblocker</h3>
+              <p class="project-blurb">A Chrome extension for blocking ads, trackers, and annoying page elements—with filter lists, per-site controls, an element picker, stats, and a dark settings UI.</p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li>JavaScript</li><li>Chrome MV3</li><li>EasyList</li><li>CSS</li>
+              </ul>
+              <div class="card-links"><span class="private-note">private source · browser extension</span></div>
+            </article>
+
+            <article class="project-card card-coral" data-project data-status="wip">
+              <div class="card-topline">
+                <span class="project-number">06</span>
+                <span class="status wip"><i aria-hidden="true"></i> wip</span>
+              </div>
+              <p class="date-line"><time datetime="2026-05-18">started may 18, 2026</time> → now</p>
+              <h3>Lumi TV</h3>
+              <p class="project-blurb">A private, invite-only movie and TV catalog with TMDB metadata, accounts, watch history, watchlists, and a streaming-style interface.</p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li>Next.js</li><li>TMDB</li><li>Prisma</li><li>Postgres</li>
+              </ul>
+              <div class="card-links"><span class="private-note">private build · invite only</span></div>
+            </article>
+
+            <article class="project-card card-cream" data-project data-status="wip">
+              <div class="card-topline">
+                <span class="project-number">07</span>
+                <span class="status wip"><i aria-hidden="true"></i> just started</span>
+              </div>
+              <p class="date-line"><time datetime="2026-08-28">started aug 28, 2026</time> → now</p>
+              <h3>Cassan Hyprland</h3>
+              <p class="project-blurb">My personal Hyprland setup and dotfiles. It’s brand new, so this one is mostly a signpost for now—but it’ll eventually hold the whole desktop theme and configuration.</p>
+              <ul class="tag-list" aria-label="Project topics">
+                <li>Hyprland</li><li>Linux</li><li>Dotfiles</li><li>Personal setup</li>
+              </ul>
+              <div class="card-links">
+                <a href="https://github.com/aikoned/cassan-hyprland" target="_blank" rel="noreferrer">follow along ↗</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="about-sticker" aria-hidden="true">07 things<br>& counting</div>
+        <div class="about-copy">
+          <p class="tiny-label">about this page</p>
+          <h2 id="about-title">a place to remember what i built—and why.</h2>
+          <p>I jump between desktop tools, web apps, bots, games, and whatever else seems interesting that week. This page is my running log: finished work, works in progress, and eventually the ideas I decide to archive.</p>
+          <p class="about-key"><span class="key-dot done"></span> completed means it shipped <span class="key-dot active"></span> wip means i'm still poking at it</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p><strong>aikon</strong> · making useful-ish things since 2023</p>
+      <div>
+        <a href="https://github.com/aikoned" target="_blank" rel="noreferrer">github ↗</a>
+        <a href="#top">back to top ↑</a>
+        <span>© <span id="current-year">2026</span></span>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

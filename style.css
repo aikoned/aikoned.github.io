@@ -1,221 +1,453 @@
-/* Reset default margin and padding */
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%; /* Make sure the html and body cover the full height of the window */
+:root {
+  --paper: #fff8ed;
+  --ink: #292a27;
+  --faded: #706f68;
+  --coral: #ff766b;
+  --yellow: #ffd867;
+  --blue: #9eb8ff;
+  --mint: #aee3c2;
+  --lilac: #d7c4f5;
+  --pink: #f5b8cf;
+  --line: rgba(41, 42, 39, 0.18);
+  --page: min(1120px, calc(100vw - 40px));
+  --round: ui-rounded, "Avenir Next", "Segoe UI", sans-serif;
+  --mono: "SFMono-Regular", Consolas, monospace;
 }
 
-/* Apply a smooth gradient to the entire page */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    background: linear-gradient(to bottom, #ffc0cb, #ffffff); /* Smooth gradient from pink to white */
-    min-height: 100%;
-    background-size: cover;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--round);
+  line-height: 1.55;
 }
 
-.container {
-    position: relative;
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust transform to center the content exactly */
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
+a { color: inherit; text-decoration: none; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 4px;
 }
 
-/* Styles for the start adventure button */
-.start-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 50;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--yellow);
+  transform: translateY(-160%);
 }
 
-/* Styles for the unlock button */
-.unlock-btn {
-    background-color: grey; /* Solid grey color for the button */
-    color: white; /* White text color for better visibility */
-    padding: 15px 15px; /* Padding to create a round shape */
-    border-radius: 50%; /* Fully round shape */
-    font-size: 16px; /* Font size for the text inside the button */
-    border: none; /* No border for the button */
-    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
-    transition: background-color 0.3s; /* Transition for the hover effect */
+.skip-link:focus { transform: translateY(0); }
+
+.topbar {
+  width: var(--page);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-bottom: 1px dashed var(--line);
 }
 
-.unlock-btn:hover {
-    background-color: darkgrey; /* Darker grey color on hover for interactive feedback */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
-/* Styles for the password input container */
-.password-input {
-    margin-top: 20px;
+.logo-dot {
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
-/* Styles for the password input field */
-.password-input input {
-    padding: 5px;
-    margin-right: 5px;
-    border: 1px solid #ccc; /* Light grey border for the input */
-    border-radius: 4px; /* Slightly rounded corners for the input field */
+.topbar nav {
+  display: flex;
+  gap: clamp(16px, 3vw, 34px);
+  font-size: 13px;
+  font-weight: 700;
 }
 
-/* Ensure the gradient and container are always centered and cover full height even when content changes */
-@media (min-height: 100%) {
-    .container {
-        position: absolute;
-        top: 50%;
-    }
+.topbar nav a { padding-bottom: 2px; border-bottom: 2px solid transparent; }
+.topbar nav a:hover { border-color: var(--coral); }
+
+.intro {
+  position: relative;
+  width: var(--page);
+  min-height: 590px;
+  margin: 0 auto;
+  padding: clamp(78px, 11vw, 128px) 0 86px;
 }
 
-.hint-section {
-    margin-top: 20px;
+.tiny-label,
+.date-line {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
 }
 
-.hint {
-    background-color: transparent; /* Make background transparent */
-    font-family: inherit; /* Inherit font styles from the body */
-    color: inherit; /* Inherit text color */
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: none; /* Remove any box-shadow if present */
+.intro h1 {
+  max-width: 900px;
+  margin: 0 0 40px;
+  font-size: clamp(56px, 8.7vw, 108px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.075em;
 }
 
-.cipher-chart-container {
-    text-align: center; /* Center-align the contents */
+.intro h1 span {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
 }
 
-.cipher-chart {
-    text-align: center;
-    background-color: transparent; /* Keeping the background transparent */
-    border-radius: 4px; /* Retaining the rounded corners */
-    padding: 10px;
-    margin-bottom: 20px; /* Space before the next content */
-    font-family: 'Courier New', Courier, monospace; /* Monospace font for better alignment */
-    /* Removed the border property */
+.intro h1 span::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -2%;
+  right: -4%;
+  bottom: 0.04em;
+  height: 0.28em;
+  border-radius: 50%;
+  background: var(--yellow);
+  transform: rotate(-1.5deg);
 }
 
-/* Add this style to your existing CSS to style the Submit Answer button */
-button {
-    background-color: grey; /* Grey background color */
-    color: white; /* White text color */
-    border: none; /* Remove the border */
-    border-radius: 50px; /* Make the button rounded */
-    padding: 10px 20px; /* Adjust padding as needed */
-    cursor: pointer; /* Add pointer cursor for interactivity */
+.intro-note {
+  max-width: 650px;
+  margin-left: min(18vw, 200px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 42px;
 }
 
-/* Style the button on hover */
-button:hover {
-    background-color: darkgrey; /* Darker grey on hover */
+.intro-note p { margin: 0; color: var(--faded); font-size: 18px; }
+
+.intro-note a,
+.card-links a {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid currentColor;
 }
 
-.riddle {
-    text-align: center; /* Center-align text horizontally */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh; /* Center-align vertically based on viewport height */
+.orbit {
+  position: absolute;
+  top: 90px;
+  right: -70px;
+  width: 190px;
+  height: 190px;
+  border: 2px dashed var(--line);
+  border-radius: 50%;
+  transform: rotate(12deg);
 }
 
-/* Style for the round button */
-.round-button {
-    display: inline-block;
-    background-color: grey; /* Grey background color */
-    color: white; /* White text color */
-    border: none; /* Remove the border */
-    border-radius: 50px; /* Make the button rounded */
-    padding: 10px 20px; /* Adjust padding as needed */
-    text-decoration: none; /* Remove underline from the link */
-    margin-top: 20px; /* Add margin for spacing */
-    cursor: pointer; /* Add pointer cursor for interactivity */
+.orbit i { position: absolute; display: block; border: 2px solid var(--ink); border-radius: 50%; }
+.orbit i:nth-child(1) { width: 22px; height: 22px; top: 10px; left: 58px; background: var(--blue); }
+.orbit i:nth-child(2) { width: 14px; height: 14px; right: 8px; bottom: 52px; background: var(--coral); }
+.orbit i:nth-child(3) { width: 17px; height: 17px; left: 4px; bottom: 40px; background: var(--mint); }
+
+.project-section {
+  padding: 100px max(20px, calc((100vw - 1120px) / 2)) 110px;
+  background: #302f43;
+  color: #fffaf2;
 }
 
-/* Style the button on hover */
-.round-button:hover {
-    background-color: darkgrey; /* Darker grey on hover */
+.section-title-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 44px;
 }
 
-/* Style for the left-aligned container */
-.container-left {
-    text-align: left;
-    padding: 20px; /* Add padding for spacing */
+.tiny-label { color: #c8c4d2; }
+.tiny-label::before { content: "// "; color: var(--yellow); }
+
+.section-title-row h2 {
+  margin: 8px 0 0;
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.055em;
 }
 
-/* Style for the title */
-.title {
-    font-size: 30px; /* Adjust the font size as needed */
-    font-weight: bold; /* Optionally, make the title bold */
+.side-note {
+  max-width: 250px;
+  margin: 0;
+  color: #c8c4d2;
+  font-size: 13px;
+  text-align: right;
 }
 
-/* Style for the left-aligned poem */
-.poem-left {
-    text-align: left;
-    margin-bottom: 20px; /* Add margin for spacing */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
-/* Style for the poem text */
-.poem-text {
-    font-size: 25px; /* Adjust the font size as needed */
+.project-card {
+  position: relative;
+  min-height: 460px;
+  padding: clamp(28px, 4vw, 44px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--ink);
+  border-radius: 28px;
+  color: var(--ink);
+  box-shadow: 7px 7px 0 #171720;
+  transform: rotate(-0.45deg);
 }
 
-/* Style for the message */
-.message {
-    font-size: 16px; /* Adjust the font size as needed */
+.project-card:nth-child(even) { transform: rotate(0.6deg) translateY(8px); }
+.card-yellow { background: var(--yellow); }
+.card-blue { background: var(--blue); }
+.card-mint { background: var(--mint); }
+.card-lilac { background: var(--lilac); }
+.card-pink { background: var(--pink); }
+.card-coral { background: var(--coral); }
+.card-cream { background: #fff2d4; }
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  right: -65px;
+  top: 90px;
+  border: 2px solid rgba(41, 42, 39, 0.22);
+  border-radius: 50%;
 }
 
-/* Style for the full-screen background image */
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('backgroundimg.png'); /* Replace with your image path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0; /* Initially set opacity to 0 */
-    z-index: -1; /* Place behind other content */
+.card-topline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.5; /* Adjust the final opacity as needed */
-    }
+.project-number {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 800;
 }
 
-/* Apply the fade-in animation to the background image */
-.fadeIn {
-    animation: fade-in 5s ease-in-out forwards; /* Adjust animation duration as needed */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 800;
 }
 
+.status i { width: 7px; height: 7px; border-radius: 50%; background: #23834d; }
+.status.wip i { background: #d86125; box-shadow: 0 0 0 3px rgba(216, 97, 37, 0.18); }
+.date-line { margin-top: 42px; color: rgba(41, 42, 39, 0.62); }
 
-
-/* Style for the left-aligned container */
-.container-left {
-    text-align: left;
-    padding: 20px; /* Add padding for spacing */
-    position: relative; /* Relative positioning to layer text on top */
-    z-index: 1; /* Place above the background image */
+.project-card h3 {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 10px 0 20px;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
 }
 
-/* Rest of your CSS styles for text and button here */
+.project-blurb {
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+  margin: 0;
+  font-size: 15px;
+}
 
+.tag-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 26px 0 34px;
+  padding: 0;
+  list-style: none;
+}
 
+.tag-list li {
+  padding: 5px 9px;
+  border: 1px solid rgba(41, 42, 39, 0.4);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+}
 
+.card-links {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
 
+.card-links a:hover { color: #5b164a; }
+.private-note { color: rgba(41, 42, 39, 0.56); font: 700 9px/1 var(--mono); }
 
+.wip-block {
+  margin-top: 112px;
+  padding-top: 92px;
+  border-top: 1px dashed rgba(255, 250, 242, 0.28);
+}
 
+.wip-grid .project-card { min-height: 440px; }
 
+.wip-grid .project-card:last-child {
+  grid-column: 1 / -1;
+  min-height: 340px;
+  padding-right: min(46%, 500px);
+}
 
+.wip-grid .project-card:last-child::after {
+  width: 310px;
+  height: 310px;
+  right: 70px;
+  top: 14px;
+}
 
+.about {
+  position: relative;
+  width: var(--page);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.55fr 1.45fr;
+  gap: clamp(50px, 9vw, 120px);
+  padding: 120px 0;
+}
 
+.about-sticker {
+  align-self: start;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 180px;
+  height: 180px;
+  border: 2px solid var(--ink);
+  border-radius: 46% 54% 54% 46% / 53% 43% 57% 47%;
+  background: var(--yellow);
+  box-shadow: 7px 7px 0 var(--ink);
+  font: 800 17px/1.25 var(--mono);
+  text-align: center;
+  transform: rotate(-5deg);
+}
 
+.about .tiny-label { color: var(--faded); }
+.about .tiny-label::before { color: var(--coral); }
+
+.about h2 {
+  max-width: 720px;
+  margin: 12px 0 30px;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.about-copy > p:not(.tiny-label):not(.about-key) {
+  max-width: 660px;
+  margin: 0;
+  color: var(--faded);
+  font-size: 18px;
+}
+
+.about-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 34px 0 0;
+  font: 700 10px/1.6 var(--mono);
+}
+
+.key-dot {
+  width: 9px;
+  height: 9px;
+  margin-left: 10px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+
+.key-dot:first-child { margin-left: 0; }
+.key-dot.done { background: #23834d; }
+.key-dot.active { background: #d86125; }
+
+.footer {
+  width: var(--page);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 30px 0 42px;
+  border-top: 1px dashed var(--line);
+  color: var(--faded);
+  font: 700 10px/1.5 var(--mono);
+}
+
+.footer p { margin: 0; }
+.footer div { display: flex; gap: 24px; }
+.footer a { border-bottom: 1px solid transparent; }
+.footer a:hover { border-color: var(--coral); color: var(--ink); }
+
+@media (max-width: 760px) {
+  :root { --page: calc(100vw - 28px); }
+  .topbar nav a:not(:last-child) { display: none; }
+  .intro { min-height: 550px; padding-top: 76px; }
+  .intro h1 { font-size: clamp(52px, 15.5vw, 76px); }
+  .intro-note { grid-template-columns: 1fr; gap: 28px; margin-left: 0; }
+  .orbit { opacity: 0.5; right: -115px; }
+  .section-title-row { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .side-note { text-align: left; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card { min-height: 430px; transform: none; }
+  .project-card:nth-child(even) { transform: none; }
+  .wip-block { margin-top: 84px; padding-top: 70px; }
+  .wip-grid .project-card:last-child { grid-column: auto; min-height: 430px; padding-right: clamp(28px, 4vw, 44px); }
+  .wip-grid .project-card:last-child::after { width: 140px; height: 140px; right: -65px; top: 90px; }
+  .about { grid-template-columns: 1fr; padding: 88px 0; }
+  .about-sticker { justify-self: start; width: 135px; height: 135px; font-size: 13px; }
+  .footer { align-items: flex-start; flex-direction: column; }
+  .footer div { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
